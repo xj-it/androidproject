@@ -74,7 +74,6 @@ public class MainActivity extends Activity implements OnClickListener{
 	
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		if(v==btnCallTel){
 			TellService ts=new TellService(MainActivity.this);
 			ts.onCallTel("1008611");
@@ -83,14 +82,12 @@ public class MainActivity extends Activity implements OnClickListener{
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		android.os.Process.killProcess(PhoneInfoService.pid);
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 			initSystemSet();
 	}
