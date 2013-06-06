@@ -6,6 +6,7 @@ import android.telephony.TelephonyManager;
 
 public class MyPhoneStateListener extends PhoneStateListener {
 
+	@SuppressWarnings("unused")
 	private Activity activity;
 	public MyPhoneStateListener(Activity activity) {
 		// TODO Auto-generated constructor stub

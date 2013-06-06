@@ -16,6 +16,7 @@ public class PhoneInfoService {
 	public static final int pid = android.os.Process.myPid();
 	private Activity activity;
 	private AlertDialog.Builder builder;
+	@SuppressWarnings("unused")
 	private AlertDialog ad;
 	public PhoneInfoService(Activity activity){
 		this.activity=activity;
