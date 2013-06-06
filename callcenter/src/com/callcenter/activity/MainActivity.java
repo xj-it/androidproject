@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class MainActivity extends Activity implements OnClickListener,OnLongClic
 	private MyReceiver receiver;
 	private TextView contentView;
 	private TellService ts;//电话服务
+	private Button selbtn;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -74,6 +76,7 @@ public class MainActivity extends Activity implements OnClickListener,OnLongClic
 		lBtnCallTel.add((Button)findViewById(R.id.btnCallTel1212));
 		for(Button btn:lBtnCallTel){
 			btn.setOnClickListener(this);
+			btn.setOnLongClickListener(this);
 			this.registerForContextMenu(btn);
 		}
 		
@@ -113,12 +116,22 @@ public class MainActivity extends Activity implements OnClickListener,OnLongClic
 	@Override
 	public boolean onLongClick(View v) {
 		// TODO Auto-generated method stub
-		
+		selbtn=(Button)v;
 		return false;
 	}
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
+		switch (item.getItemId()) {
+		case R.id.calltell:
+			if(null!=selbtn){
+				ts.onCallTel(String.valueOf(selbtn.getText()));
+			}
+			break;
+
+		default:
+			break;
+		}
 		return super.onContextItemSelected(item);
 	}
 	@Override
