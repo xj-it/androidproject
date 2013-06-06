@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+       <item android:id="@+id/calltell" android:title="@string/menu_action_call"/>
+       <item android:id="@+id/addbtn" android:title="@string/menu_action_addbtn"/>
+       <item android:id="@+id/delbtn" android:title="@string/menu_action_delbtn"/>
+</menu>
