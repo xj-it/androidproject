@@ -1,31 +1,85 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
-    tools:context=".MainActivity" >
+    android:layout_gravity="center_vertical"
+    android:background="#e6f0fc"
+    tools:context=".MainActivity" 
+    >
 
-    <!--
-         The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc.
-    -->
-
-    <TextView
-        android:id="@+id/fullscreen_content"
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnCallTel"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cnnc_content" />
+        android:layout_gravity="center" >
+
+        <TableRow android:gravity="center" android:padding="5dp">
+
+            <Button
+                android:id="@+id/btnCallTel110"
+                style="@style/btnfont"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/mybutton"
+                android:text="@string/cnnc_content110" 
+                />
+
+            <Button 
+                android:id="@+id/btnCallTel119"
+                style="@style/btnfont"
+                 android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/mybutton"
+                android:text="@string/cnnc_content119"
+                android:layout_marginLeft="5dp"
+                 />
+        </TableRow>
+
+        <TableRow android:gravity="center"  android:padding="5dp">
+
+            <Button
+                android:id="@+id/btnCallTel120"
+                style="@style/btnfont"
+                 android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/mybutton"
+                android:text="@string/cnnc_content120" />
+
+            <Button
+                android:id="@+id/btnCallTel1212"
+                style="@style/btnfont"
+                 android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/mybutton"
+                android:text="@string/cnnc_content1212" 
+                android:layout_marginLeft="5dp"
+                />
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal"  android:padding="10dp">
+
+            <Button
+                android:id="@+id/btnCallTel"
+                style="@style/btnfont"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/mybutton"
+                android:text="@string/cnnc_content" />
+
+        </TableRow>
+
+        <TableRow android:gravity="center_horizontal"  android:padding="10dp">
+
+            <TextView
+                android:id="@+id/fullscreen_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:keepScreenOn="true"
+                android:text="@string/dummy_content"
+                android:textColor="#33b5e5"
+                android:textStyle="bold" />
+        </TableRow>
+    </TableLayout>
 
 </FrameLayout>

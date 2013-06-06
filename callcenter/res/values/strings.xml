@@ -4,5 +4,10 @@
     <string name="app_name">callcenter</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+	<string name="cnnc_content110">110</string>
+	<string name="cnnc_content119">119</string>
+	<string name="cnnc_content120">120</string>
+	<string name="cnnc_content1212">1212</string>
 	<string name="cnnc_content">10086</string>
+	<string name="button_size">130dp</string>
 </resources>
