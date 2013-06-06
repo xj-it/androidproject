@@ -1,13 +1,21 @@
 package com.callcenter.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -22,25 +30,24 @@ import com.callcenter.service.TellService;
  * 
  * @see SystemUiHider
  */
-public class MainActivity extends Activity implements OnClickListener{
+public class MainActivity extends Activity implements OnClickListener,OnLongClickListener{
 
-	private Button btnCallTel;
+	private List<Button> lBtnCallTel;
 	private GPSService gps;
 	private PhoneInfoService pis;
 	private MyHandler hander;
 	private MyReceiver receiver;
 	private TextView contentView;
+	private TellService ts;//电话服务
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
-
-		contentView = (TextView)findViewById(R.id.fullscreen_content);
-		contentView.setText("运行");
-		btnCallTel = (Button)findViewById(R.id.btnCallTel);
-		btnCallTel.setOnClickListener(MainActivity.this);
+		//初始化组件
+		initWidgets();
 		hander=new MyHandler(this, Looper.getMainLooper());
+		ts=new TellService(MainActivity.this);
 //		//电话状态监听
 //		// 对电话的来电状态进行监听
 //		TelephonyManager telManager = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
@@ -54,6 +61,21 @@ public class MainActivity extends Activity implements OnClickListener{
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
 		registerReceiver(receiver, intentFilter);
+		
+	}
+	private void initWidgets(){
+		contentView = (TextView)findViewById(R.id.fullscreen_content);
+		contentView.setText("运行");
+		lBtnCallTel=new ArrayList<Button>();
+		lBtnCallTel.add((Button)findViewById(R.id.btnCallTel));
+		lBtnCallTel.add((Button)findViewById(R.id.btnCallTel110));
+		lBtnCallTel.add((Button)findViewById(R.id.btnCallTel119));
+		lBtnCallTel.add((Button)findViewById(R.id.btnCallTel120));
+		lBtnCallTel.add((Button)findViewById(R.id.btnCallTel1212));
+		for(Button btn:lBtnCallTel){
+			btn.setOnClickListener(this);
+			this.registerForContextMenu(btn);
+		}
 		
 	}
 	public void initSystemSet(){
@@ -74,10 +96,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	
 	@Override
 	public void onClick(View v) {
-		if(v==btnCallTel){
-			TellService ts=new TellService(MainActivity.this);
-			ts.onCallTel("1008611");
-		}
+		ts.onCallTel(((Button)v).getText().toString());
 	}
 
 	@Override
@@ -90,6 +109,25 @@ public class MainActivity extends Activity implements OnClickListener{
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 			initSystemSet();
+	}
+	@Override
+	public boolean onLongClick(View v) {
+		// TODO Auto-generated method stub
+		
+		return false;
+	}
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		return super.onContextItemSelected(item);
+	}
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.edit_button_menu, menu);
+		
 	}
 	
 }

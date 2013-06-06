@@ -8,6 +8,10 @@
 	<string name="cnnc_content119">119</string>
 	<string name="cnnc_content120">120</string>
 	<string name="cnnc_content1212">1212</string>
-	<string name="cnnc_content">10086</string>
+	<string name="cnnc_content">1008611</string>
 	<string name="button_size">130dp</string>
+	<string name="menu_action">操作</string>
+	<string name="menu_action_call">呼叫</string>
+	<string name="menu_action_addbtn">增加</string>
+	<string name="menu_action_delbtn">删除</string>
 </resources>

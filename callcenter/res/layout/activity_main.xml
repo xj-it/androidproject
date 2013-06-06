@@ -66,6 +66,11 @@
                 android:background="@drawable/mybutton"
                 android:text="@string/cnnc_content" />
 
+            <AnalogClock
+                android:id="@+id/analogClock1"
+                android:layout_width="120dp"
+                android:layout_height="120dp" />
+
         </TableRow>
 
         <TableRow android:gravity="center_horizontal"  android:padding="10dp">
